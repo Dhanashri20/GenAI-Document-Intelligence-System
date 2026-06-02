@@ -1,0 +1,22 @@
+# ---- UI ----
+streamlit>=1.33
+
+# ---- Core ML / RAG ----
+numpy>=1.24
+sentence-transformers>=2.6.0      # general / biomedical / scientific embeddings
+transformers>=4.40                # FLAN-T5 generation pipeline
+torch>=2.2                        # CPU build is fine: pip install torch --index-url https://download.pytorch.org/whl/cpu
+faiss-cpu>=1.8.0                  # vector index (numpy fallback if absent)
+rank-bm25>=0.2.2                  # hybrid keyword retrieval
+
+# ---- Document parsing ----
+pymupdf>=1.24.0                   # primary PDF backend (import name: fitz)
+pdfplumber>=0.11.0                # fallback PDF backend
+
+# ---- Medical NER (scispaCy) ----
+# spaCy + a scispaCy model are optional; a regex/lexicon fallback is used if absent.
+spacy>=3.7
+scispacy>=0.5.4
+# Install a model after the above, e.g.:
+#   pip install https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.5.4/en_ner_bc5cdr_md-0.5.4.tar.gz
+#   pip install https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.5.4/en_core_sci_sm-0.5.4.tar.gz
